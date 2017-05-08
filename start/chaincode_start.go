@@ -141,7 +141,7 @@ func (t *SimpleChaincode) add_ecert(stub shim.ChaincodeStubInterface, name strin
 func (t *SimpleChaincode) get_username(stub shim.ChaincodeStubInterface) (string, error) {
 
     username, err := stub.ReadCertAttribute("username");
-	logger.Debug("username: ", username)    
+	fmt.Println("USERNAME get_username: " + username)    
 	if err != nil { return "", errors.New("Couldn't get attribute 'username'. Error: " + err.Error()) }
 	return string(username), nil
 }
@@ -153,7 +153,8 @@ func (t *SimpleChaincode) get_username(stub shim.ChaincodeStubInterface) (string
 
 func (t *SimpleChaincode) check_affiliation(stub shim.ChaincodeStubInterface) (string, error) {
     affiliation, err := stub.ReadCertAttribute("role");
-	logger.Debug("role: ", affiliation)
+	//logger.Debug("role: ", affiliation)
+	fmt.Println("ROLE check_affiliation: " + affiliation)
 	if err != nil { return "", errors.New("Couldn't get attribute 'role'. Error: " + err.Error()) }
 	return string(affiliation), nil
 
